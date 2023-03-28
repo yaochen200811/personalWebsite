@@ -23,6 +23,10 @@ const InnerContainer = styled.div`
 	font-size: 1.5rem;
 	overflow-x: hidden;
 
+	@media (max-width: 900px) {
+		font-size: 1.2rem;
+	}
+
 	::-webkit-scrollbar {
 		width: 8px;
 	}

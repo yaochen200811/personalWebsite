@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { State } from "../type/app.type";
@@ -10,10 +10,42 @@ interface HomeProps {
 }
 
 const Home = ({ setPage, displayPage }: HomeProps) => {
-	return (
-		<Container style={{ opacity: displayPage ? 1 : 0, visibility: displayPage ? "visible" : "hidden" }}>
-			<Nanme>Chen Yao</Nanme>
-			<NameShadow>Chen Yao</NameShadow>
+	const [isMobile, setIsMobile] = useState(false);
+
+	const handleResize = () => {
+		if (window.innerWidth > 900) {
+			setIsMobile(false);
+		} else {
+			setIsMobile(true);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener("resize", handleResize);
+	}, []);
+
+	const MobileButtons = (
+		<>
+			<BubbleButton onClick={() => setPage("work")} bottom="20vh" left="16px">
+				Work
+			</BubbleButton>
+			<BubbleButton onClick={() => setPage("about")} bottom="5vh" left="calc(50vw - 5rem)">
+				About
+			</BubbleButton>
+			<BubbleButton onClick={() => setPage("project")} bottom="20vh" right="16px">
+				Projects
+			</BubbleButton>
+			<BubbleButton onClick={() => setPage("education")} bottom="50vh" left="16px">
+				Education
+			</BubbleButton>
+			<BubbleButton onClick={() => setPage("skill")} bottom="50vh" right="16px">
+				Skills
+			</BubbleButton>
+		</>
+	);
+
+	const DeskButtons = (
+		<>
 			<BubbleButton onClick={() => setPage("work")} bottom="20vh" left="13vw">
 				Work
 			</BubbleButton>
@@ -29,6 +61,14 @@ const Home = ({ setPage, displayPage }: HomeProps) => {
 			<BubbleButton onClick={() => setPage("skill")} bottom="50vh" right="8vw">
 				Skills
 			</BubbleButton>
+		</>
+	);
+
+	return (
+		<Container style={{ opacity: displayPage ? 1 : 0, visibility: displayPage ? "visible" : "hidden" }}>
+			<Nanme>Chen Yao</Nanme>
+			<NameShadow>Chen Yao</NameShadow>
+			{isMobile ? MobileButtons : DeskButtons}
 		</Container>
 	);
 };
@@ -49,6 +89,11 @@ const Nanme = styled.div`
 	color: #5cd9ff;
 	font-family: Aquino;
 	line-height: 1.1;
+
+	@media (max-width: 900px) {
+		font-size: 3rem;
+		bottom: 43vh;
+	}
 `;
 
 const NameShadow = styled(Nanme)`

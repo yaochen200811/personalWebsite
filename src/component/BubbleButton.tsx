@@ -45,6 +45,13 @@ const Bubble = styled.div`
 	:hover {
 		scale: 1.1;
 	}
+
+	@media (max-width: 900px) {
+		scale: 0.7;
+		:hover {
+			scale: 0.8;
+		}
+	}
 `;
 
 const BackBubble = styled(Bubble)`

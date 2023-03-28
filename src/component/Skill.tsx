@@ -50,6 +50,11 @@ const SkillContainer = styled.div`
 const SkillCell = styled.li`
 	max-width: 33%;
 	width: 33%;
+
+	@media (max-width: 900px) {
+		max-width: 50%;
+		width: 50%;
+	}
 `;
 
 export default Skill;

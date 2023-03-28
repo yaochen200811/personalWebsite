@@ -37,6 +37,11 @@ const About = ({ setPage, displayPage }: AboutProps) => {
 const CenterContainer = styled.div`
 	text-align: center;
 	font-size: 2rem;
+	word-break: break-word;
+
+	@media (max-width: 900px) {
+		font-size: 1.5rem;
+	}
 `;
 
 export default About;

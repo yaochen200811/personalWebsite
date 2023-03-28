@@ -32,6 +32,10 @@ const Text = styled.div`
 	font-size: 9rem;
 	color: #8dc6ef;
 	line-height: 1.5;
+
+	@media (max-width: 900px) {
+		font-size: 3rem;
+	}
 `;
 
 const LoadingBar = styled.div`
